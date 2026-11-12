@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f75f5bdda6825409adda5997372f8f, type: 3}
+  m_Name: EyeAssets
+  m_EditorClassIdentifier: Gyorome.Runtime::Gyorome.EyeAssets
+  eyeball: {fileID: -695388640154688594, guid: e1f065554216450459d668194d126cfc, type: 3}
+  iris: {fileID: -3322546712403220151, guid: c59b10344fc3a3d4582afcad3e9a2828, type: 3}
+  lidUpper: {fileID: 323226931240787928, guid: 3e0901521054d1f4bb30b0c9dae675f6, type: 3}
+  lidLower: {fileID: 8300580409279851498, guid: 5d9297582d1bc8c4cae1803d95f5a226, type: 3}
+  tear: {fileID: 7549676233410476044, guid: 75a997da41e6f524693db7658a75d0bc, type: 3}
+  sclera: {fileID: 2100000, guid: bd935247eb2ff014d82fe9469b53d87b, type: 2}
+  irisMaterial: {fileID: 2100000, guid: 40399d59c808cf749a08bfd676c07280, type: 2}
+  lid: {fileID: 2100000, guid: 1c372ac3fe9d717468b1e6856d9fad3e, type: 2}
+  tearMaterial: {fileID: 2100000, guid: a535d15b74366d9429c749a2d421b780, type: 2}
+  background: {fileID: 2100000, guid: 691612ae0011a3241969b1dd2bd73c29, type: 2}
+  clips:
+  - name: blink
+    clip: {fileID: 8300000, guid: 022018eb3a0355646a01dd627bd3e205, type: 3}
+  - name: bounce
+    clip: {fileID: 8300000, guid: 1dd4fe50ffa053f49867bbc52a248649, type: 3}
+  - name: chime
+    clip: {fileID: 8300000, guid: 5c5b5fc3e594cf248b514a20d2ed6196, type: 3}
+  - name: dizzy
+    clip: {fileID: 8300000, guid: 515ac6a31dbd73241867212bc1bc4c6b, type: 3}
+  - name: drip
+    clip: {fileID: 8300000, guid: a71c14cdc468a814f8ab8cfacee8ed43, type: 3}
+  - name: giggle
+    clip: {fileID: 8300000, guid: 9cf5ac1db402a0444b803afbafefca74, type: 3}
+  - name: growl
+    clip: {fileID: 8300000, guid: 916c2d90472c08e42bfc08806fd67fb4, type: 3}
+  - name: hiccup
+    clip: {fileID: 8300000, guid: 0eb87ee763cff7e48a00ecc5d6600e31, type: 3}
+  - name: hiss
+    clip: {fileID: 8300000, guid: 80b7be04f5913384082aac8fd86be947, type: 3}
+  - name: hop
+    clip: {fileID: 8300000, guid: 632b99d79b88e3b4488fca38d10aebb2, type: 3}
+  - name: jackpot
+    clip: {fileID: 8300000, guid: aacdce6896235b441985ff831eb561ea, type: 3}
+  - name: kiss
+    clip: {fileID: 8300000, guid: 7d49f738938c0ed49ab2e9ac66e8faf1, type: 3}
+  - name: knock
+    clip: {fileID: 8300000, guid: fd81b53e2ff97cd49b9f7b0bbab285b6, type: 3}
+  - name: laugh
+    clip: {fileID: 8300000, guid: 46dab0a56ff624544a6728f0b024ec94, type: 3}
+  - name: note
+    clip: {fileID: 8300000, guid: 592f930b63d429540849e2327bf90268, type: 3}
+  - name: poke
+    clip: {fileID: 8300000, guid: 6ad5eb223eec0a447b9a4c5e8dffa283, type: 3}
+  - name: pop
+    clip: {fileID: 8300000, guid: 8bf96700ab16ce24ab334ca5133260ad, type: 3}
+  - name: purr
+    clip: {fileID: 8300000, guid: 3697ee44ad1633b49886c7238c3e0342, type: 3}
+  - name: rattle
+    clip: {fileID: 8300000, guid: 76d040f0f9ef8e64bb3d2f324e4559f8, type: 3}
+  - name: sneeze
+    clip: {fileID: 8300000, guid: a9124fff771b1694592fa62ce561a244, type: 3}
+  - name: snore
+    clip: {fileID: 8300000, guid: 1e356f7a8a2fc5b418c3fb937489baea, type: 3}
+  - name: sparkle
+    clip: {fileID: 8300000, guid: 07c89a265f9ab72498ccbb069bf31def, type: 3}
+  - name: spin
+    clip: {fileID: 8300000, guid: ecd31a1c8a8c606419984cb8764e6c97, type: 3}
+  - name: squish
+    clip: {fileID: 8300000, guid: 3a7a9a7674a0bce4598df61fb3fa21f7, type: 3}
+  - name: surprise
+    clip: {fileID: 8300000, guid: ecadb698d45cbb049b85ef9bd7f42f67, type: 3}
+  - name: whoosh
+    clip: {fileID: 8300000, guid: bb196b31e56e05c40b0b39bf169e7ee7, type: 3}
+  - name: yawn
+    clip: {fileID: 8300000, guid: dda8ae80602f83043be57474afbb75c6, type: 3}
+  ambience: {fileID: 8300000, guid: b258eb86a76802a4c93453bfe638e60b, type: 3}
+  bodyFont: {fileID: 12800000, guid: 65c90d889ba90c44ea6f8005cda46653, type: 3}
+  titleFont: {fileID: 12800000, guid: 618f23dcca282134fab1a53acbc236ea, type: 3}
+  appIcon: {fileID: 2800000, guid: 41f33b45d15737c468c15fb672d43358, type: 3}

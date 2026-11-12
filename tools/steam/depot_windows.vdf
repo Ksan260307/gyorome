@@ -1,0 +1,14 @@
+"DepotBuild"
+{
+	"DepotID" "YOUR_APP_ID+1"
+	"ContentRoot" "..\\..\\Builds\\Windows\\"
+	"FileMapping"
+	{
+		"LocalPath" "*"
+		"DepotPath" "."
+		"recursive" "1"
+	}
+	"FileExclusion" "*.pdb"
+	"FileExclusion" "*_DoNotShip*"
+	"FileExclusion" "*_BackUpThisFolder_ButDontShipItWithYourGame*"
+}

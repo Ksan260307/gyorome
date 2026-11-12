@@ -1,0 +1,13 @@
+"DepotBuild"
+{
+	"DepotID" "YOUR_APP_ID+3"
+	"ContentRoot" "..\\..\\Builds\\Linux\\"
+	"FileMapping"
+	{
+		"LocalPath" "*"
+		"DepotPath" "."
+		"recursive" "1"
+	}
+	"FileExclusion" "*_DoNotShip*"
+	"FileExclusion" "*_BackUpThisFolder_ButDontShipItWithYourGame*"
+}

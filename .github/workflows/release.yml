@@ -1,0 +1,233 @@
+name: Release builds (Android / iOS / Steam)
+
+# ストアに出すためのビルド。
+#  - タグ v1.2.3 を push すると、全プラットフォームをビルドして GitHub Release に添付する
+#  - 「Run workflow」で、対象をしぼって手動で動かせる
+#  - Unity のライセンス（Secrets: UNITY_LICENSE / UNITY_EMAIL / UNITY_PASSWORD）が必要
+#  - Android の署名: ANDROID_KEYSTORE_BASE64 / ANDROID_KEYSTORE_PASS / ANDROID_KEYALIAS_NAME / ANDROID_KEYALIAS_PASS（無ければデバッグ署名）
+#  - Steam へのアップロード: STEAM_USERNAME / STEAM_CONFIG_VDF と、Variables の STEAM_APP_ID（無ければスキップ）
+# くわしくは STORE.md。
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: "ビルドする対象（カンマ区切り）: Android, iOS, StandaloneWindows64, StandaloneOSX, StandaloneLinux64"
+        required: false
+        default: "Android,iOS,StandaloneWindows64,StandaloneOSX,StandaloneLinux64"
+      version:
+        description: "バージョン（例 1.2.0）。空なら ProjectSettings の値"
+        required: false
+        default: ""
+      steam:
+        description: "Steam にアップロードする（Secrets が必要）"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Check Unity license
+    runs-on: ubuntu-latest
+    outputs:
+      has_license: ${{ steps.lic.outputs.has_license }}
+      version: ${{ steps.ver.outputs.version }}
+    steps:
+      - id: lic
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: |
+          if [ -n "$UNITY_LICENSE" ] || [ -n "$UNITY_SERIAL" ]; then
+            echo "has_license=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_license=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Unity のライセンスが未設定なので、ストア向けビルドはスキップします（STORE.md を見てください）。"
+          fi
+      - id: ver
+        env:
+          INPUT_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          if [ -n "$INPUT_VERSION" ]; then
+            echo "version=$INPUT_VERSION" >> "$GITHUB_OUTPUT"
+          elif [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=none" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    name: Build ${{ matrix.name }}
+    needs: check
+    if: needs.check.outputs.has_license == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Android (AAB for Google Play)
+            targetPlatform: Android
+            exportType: androidAppBundle
+            artifact: Gyorome-Android-aab
+          - name: Android (APK for testing)
+            targetPlatform: Android
+            exportType: androidPackage
+            artifact: Gyorome-Android-apk
+          - name: iOS (Xcode project)
+            targetPlatform: iOS
+            exportType: ""
+            artifact: Gyorome-iOS-xcode
+          - name: Windows (Steam)
+            targetPlatform: StandaloneWindows64
+            exportType: ""
+            artifact: Gyorome-StandaloneWindows64
+          - name: macOS (Steam)
+            targetPlatform: StandaloneOSX
+            exportType: ""
+            artifact: Gyorome-StandaloneOSX
+          - name: Linux (Steam)
+            targetPlatform: StandaloneLinux64
+            exportType: ""
+            artifact: Gyorome-StandaloneLinux64
+    steps:
+      - name: Decide whether this target was requested
+        id: want
+        env:
+          TARGETS: ${{ github.event.inputs.targets }}
+          TARGET: ${{ matrix.targetPlatform }}
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] || [ -z "$TARGETS" ] || [[ ",$TARGETS," == *",$TARGET,"* ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "$TARGET は対象に入っていないのでスキップします。"
+          fi
+
+      - uses: actions/checkout@v7
+        if: steps.want.outputs.run == 'true'
+
+      - name: Free disk space
+        if: steps.want.outputs.run == 'true'
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h
+
+      - uses: actions/cache@v6
+        if: steps.want.outputs.run == 'true'
+        with:
+          path: unity/Library
+          key: Library-${{ matrix.targetPlatform }}-${{ hashFiles('unity/Assets/**', 'unity/Packages/**', 'unity/ProjectSettings/**') }}
+          restore-keys: |
+            Library-${{ matrix.targetPlatform }}-
+
+      - name: Build with Unity
+        if: steps.want.outputs.run == 'true'
+        uses: game-ci/unity-builder@v6
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        with:
+          projectPath: unity
+          targetPlatform: ${{ matrix.targetPlatform }}
+          buildMethod: Gyorome.EditorTools.BuildScript.Build
+          buildsPath: build
+          buildName: Gyorome
+          versioning: ${{ needs.check.outputs.version == 'none' && 'None' || 'Custom' }}
+          version: ${{ needs.check.outputs.version }}
+          androidVersionCode: ${{ github.run_number }}
+          androidExportType: ${{ matrix.exportType || 'androidPackage' }}
+          androidKeystoreName: user.keystore
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
+          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
+          allowDirtyBuild: true
+
+      - name: Remove debug folders
+        if: steps.want.outputs.run == 'true'
+        run: |
+          find build -type d -name '*_DoNotShip' -prune -exec rm -rf {} + || true
+          find build -type d -name '*_BurstDebugInformation_DoNotShip' -prune -exec rm -rf {} + || true
+          du -sh build/* || true
+
+      - uses: actions/upload-artifact@v7
+        if: steps.want.outputs.run == 'true'
+        with:
+          name: ${{ matrix.artifact }}
+          path: build/${{ matrix.targetPlatform }}
+          if-no-files-found: error
+
+  release:
+    name: Attach to GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v') && needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # リリースにファイルを添付する
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          path: artifacts
+      - name: Zip each build
+        run: |
+          mkdir -p release
+          cd artifacts
+          for d in */; do
+            name="${d%/}"
+            (cd "$name" && zip -qr "../../release/$name.zip" .)
+          done
+          ls -la ../release
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: release/*.zip
+          generate_release_notes: true
+
+  steam:
+    name: Upload to Steam
+    needs: build
+    if: needs.build.result == 'success' && (startsWith(github.ref, 'refs/tags/v') || github.event.inputs.steam == 'true')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Steam secrets
+        id: steam
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+          STEAM_APP_ID: ${{ vars.STEAM_APP_ID }}
+        run: |
+          if [ -n "$STEAM_USERNAME" ] && [ -n "$STEAM_CONFIG_VDF" ] && [ -n "$STEAM_APP_ID" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Steam の Secrets（STEAM_USERNAME / STEAM_CONFIG_VDF）か Variables の STEAM_APP_ID が無いので、アップロードはスキップします。"
+          fi
+      - uses: actions/download-artifact@v7
+        if: steps.steam.outputs.ok == 'true'
+        with:
+          pattern: Gyorome-Standalone*
+          path: steam
+      - name: Upload with SteamPipe
+        if: steps.steam.outputs.ok == 'true'
+        uses: game-ci/steam-deploy@v3
+        with:
+          username: ${{ secrets.STEAM_USERNAME }}
+          configVdf: ${{ secrets.STEAM_CONFIG_VDF }}
+          appId: ${{ vars.STEAM_APP_ID }}
+          buildDescription: ${{ github.ref_name }} (${{ github.sha }})
+          rootPath: steam
+          depot1Path: Gyorome-StandaloneWindows64
+          depot2Path: Gyorome-StandaloneOSX
+          depot3Path: Gyorome-StandaloneLinux64
+          releaseBranch: ${{ vars.STEAM_BRANCH || 'beta' }}

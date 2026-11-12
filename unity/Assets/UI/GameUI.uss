@@ -1,0 +1,397 @@
+/* ぎょろめ UI — まるくて、やわらかく。基準は 1080 x 1920 */
+
+.root {
+    flex-grow: 1;
+    color: rgb(74, 58, 30);
+    font-size: 34px;
+}
+
+.hidden {
+    display: none;
+}
+
+.layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.hud {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition-property: opacity;
+    transition-duration: 0.4s;
+}
+
+.hud--hidden {
+    opacity: 0;
+}
+
+.hud-top {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hud-button {
+    flex-direction: row;
+    align-items: center;
+    height: 76px;
+    padding: 0 26px;
+    margin-left: 16px;
+    border-radius: 38px;
+    border-width: 0;
+    background-color: rgba(74, 58, 30, 0.55);
+    color: rgb(255, 250, 240);
+    transition-property: scale, background-color;
+    transition-duration: 0.12s;
+}
+
+.hud-button:hover {
+    background-color: rgba(74, 58, 30, 0.7);
+}
+
+.hud-button:active {
+    scale: 0.94 0.94;
+}
+
+.hud-button--round {
+    width: 76px;
+    padding: 0;
+    justify-content: center;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    -unity-background-scale-mode: scale-to-fit;
+    flex-shrink: 0;
+}
+
+.icon-book { background-image: url("Icons/icon_book.png"); }
+.icon-gear { background-image: url("Icons/icon_gear.png"); }
+.icon-close { background-image: url("Icons/icon_close.png"); width: 32px; height: 32px; }
+.icon-eye { background-image: url("Icons/icon_eye.png"); }
+
+.counter {
+    margin-left: 14px;
+    font-size: 34px;
+    -unity-font-style: bold;
+    color: rgb(255, 250, 240);
+}
+
+.counter--complete {
+    color: rgb(255, 228, 120);
+}
+
+/* ---- タイトル ---- */
+.title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 12%;
+    -unity-text-align: middle-center;
+    font-size: 140px;
+    letter-spacing: 18px;
+    color: rgba(74, 58, 30, 0.9);
+    -unity-font-style: bold;
+    transition-property: opacity, translate;
+    transition-duration: 0.9s;
+}
+
+.title--hidden {
+    opacity: 0;
+    translate: 0 -40px;
+}
+
+/* ---- 反応の名前（オノマトペ） ---- */
+.popup {
+    position: absolute;
+    font-size: 72px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 4px;
+    -unity-text-outline-color: rgb(74, 58, 30);
+    text-shadow: 0 6px 0 rgba(74, 58, 30, 0.35);
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    transform-origin: center;
+}
+
+.popup--new {
+    color: rgb(255, 232, 130);
+}
+
+/* ---- 記号 ---- */
+.emote {
+    position: absolute;
+    font-size: 84px;
+    -unity-font-style: bold;
+    color: rgb(255, 120, 150);
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: rgba(74, 58, 30, 0.6);
+    -unity-text-align: middle-center;
+    transform-origin: center;
+}
+
+.emote--pop { color: rgb(255, 120, 150); }
+.emote--soft { color: rgba(120, 140, 200, 0.9); font-size: 64px; }
+.emote--big { font-size: 130px; color: rgb(255, 90, 90); }
+.emote--angry { color: rgb(220, 50, 50); font-size: 110px; }
+
+/* ---- おしらせ ---- */
+.toast {
+    position: absolute;
+    left: 50%;
+    top: 130px;
+    translate: -50% 0;
+    padding: 18px 40px;
+    border-radius: 40px;
+    background-color: rgba(74, 58, 30, 0.8);
+    color: rgb(255, 250, 240);
+    font-size: 36px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    transition-property: opacity, translate;
+    transition-duration: 0.35s;
+}
+
+.toast--new {
+    background-color: rgba(255, 190, 60, 0.95);
+    color: rgb(74, 40, 10);
+}
+
+.hint {
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    translate: -50% 0;
+    padding: 14px 34px;
+    border-radius: 34px;
+    background-color: rgba(255, 255, 255, 0.55);
+    color: rgb(90, 70, 40);
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+
+/* ---- 窓 ---- */
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(40, 30, 20, 0.45);
+    align-items: center;
+    justify-content: center;
+}
+
+.panel {
+    width: 90%;
+    max-width: 980px;
+    height: 84%;
+    background-color: rgb(255, 250, 240);
+    border-radius: 44px;
+    padding: 28px 34px 34px 34px;
+}
+
+.panel--small {
+    height: auto;
+    max-height: 84%;
+}
+
+.panel-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.panel-titles {
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.panel-title {
+    font-size: 48px;
+    -unity-font-style: bold;
+}
+
+.panel-sub {
+    margin-left: 22px;
+    margin-bottom: 6px;
+    font-size: 30px;
+    color: rgb(150, 120, 80);
+}
+
+.close-button {
+    width: 72px;
+    height: 72px;
+    border-radius: 36px;
+    border-width: 0;
+    background-color: rgba(74, 58, 30, 0.75);
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.close-button:active {
+    scale: 0.92 0.92;
+}
+
+.book-list {
+    flex-grow: 1;
+}
+
+.book-category {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-size: 34px;
+    -unity-font-style: bold;
+    color: rgb(190, 130, 40);
+}
+
+.entry {
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-radius: 22px;
+    background-color: rgba(74, 58, 30, 0.06);
+}
+
+.entry--found {
+    background-color: rgba(255, 214, 112, 0.35);
+}
+
+.entry-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: rgba(74, 58, 30, 0.2);
+    margin-right: 18px;
+    flex-shrink: 0;
+}
+
+.entry--found .entry-badge {
+    background-color: rgb(255, 170, 40);
+}
+
+.entry-texts {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.entry-name {
+    font-size: 34px;
+    -unity-font-style: bold;
+}
+
+.entry-hint {
+    font-size: 26px;
+    color: rgb(130, 105, 70);
+    white-space: normal;
+}
+
+.entry-count {
+    font-size: 26px;
+    color: rgb(150, 120, 80);
+    margin-left: 14px;
+    flex-shrink: 0;
+}
+
+/* ---- せってい ---- */
+.settings-list {
+    flex-grow: 0;
+}
+
+.setting-toggle {
+    margin: 10px 0;
+    font-size: 34px;
+}
+
+.setting-toggle .unity-toggle__label {
+    min-width: 0;
+    flex-grow: 1;
+    font-size: 34px;
+    color: rgb(74, 58, 30);
+}
+
+.setting-toggle .unity-toggle__checkmark {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border-width: 3px;
+    border-color: rgb(74, 58, 30);
+    background-color: rgb(255, 255, 255);
+}
+
+.setting-toggle:checked .unity-toggle__checkmark {
+    background-color: rgb(255, 170, 40);
+}
+
+.setting-label {
+    margin-top: 22px;
+    margin-bottom: 8px;
+    font-size: 30px;
+    color: rgb(150, 120, 80);
+}
+
+.swatches {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.swatch {
+    width: 84px;
+    height: 84px;
+    border-radius: 42px;
+    margin: 8px;
+    border-width: 5px;
+    border-color: rgba(74, 58, 30, 0.15);
+    padding: 0;
+}
+
+.swatch:active {
+    scale: 0.92 0.92;
+}
+
+.swatch--selected {
+    border-color: rgb(74, 58, 30);
+}
+
+.text-button {
+    margin-top: 30px;
+    height: 72px;
+    border-radius: 36px;
+    border-width: 0;
+    background-color: rgba(74, 58, 30, 0.12);
+    color: rgb(74, 58, 30);
+    font-size: 30px;
+}
+
+.text-button--danger {
+    color: rgb(190, 60, 50);
+}
+
+.text-button--armed {
+    background-color: rgb(220, 80, 70);
+    color: rgb(255, 255, 255);
+}
+
+.version {
+    margin-top: 18px;
+    font-size: 22px;
+    color: rgb(170, 150, 120);
+    -unity-text-align: middle-center;
+}

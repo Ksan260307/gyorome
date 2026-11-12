@@ -1,0 +1,56 @@
+using UnityEngine;
+
+namespace Gyorome
+{
+    /// <summary>目の色・まぶたの色・背景のテーマ。</summary>
+    public static class Themes
+    {
+        public struct IrisTheme
+        {
+            public string name;
+            public Color outer;
+            public Color inner;
+        }
+
+        public struct LidTheme
+        {
+            public string name;
+            public Color lid;
+            public Color backgroundTop;
+            public Color backgroundBottom;
+        }
+
+        static Color Hex(string h)
+        {
+            ColorUtility.TryParseHtmlString(h, out var c);
+            return c;
+        }
+
+        public static readonly IrisTheme[] Iris =
+        {
+            new IrisTheme { name = "そら", outer = Hex("#3f7ac6"), inner = Hex("#8fc4f0") },
+            new IrisTheme { name = "こげちゃ", outer = Hex("#5a3a22"), inner = Hex("#b07a4a") },
+            new IrisTheme { name = "みどり", outer = Hex("#3f8f52"), inner = Hex("#9ed98a") },
+            new IrisTheme { name = "はいいろ", outer = Hex("#6c7a88"), inner = Hex("#b9c6d1") },
+            new IrisTheme { name = "こはく", outer = Hex("#c98a1e"), inner = Hex("#ffd56a") },
+            new IrisTheme { name = "すみれ", outer = Hex("#7a4fb8"), inner = Hex("#c9a6f0") },
+            new IrisTheme { name = "あか", outer = Hex("#b83a33"), inner = Hex("#ff9a7a") },
+            new IrisTheme { name = "もも", outer = Hex("#d9609a"), inner = Hex("#ffb8d6") },
+        };
+
+        public static readonly LidTheme[] Lid =
+        {
+            new LidTheme { name = "たまご", lid = Hex("#ffd670"), backgroundTop = Hex("#fff0c8"), backgroundBottom = Hex("#ffcc8a") },
+            new LidTheme { name = "もも", lid = Hex("#ffb7a8"), backgroundTop = Hex("#ffe6e0"), backgroundBottom = Hex("#ffc2b3") },
+            new LidTheme { name = "みんと", lid = Hex("#9fe3c4"), backgroundTop = Hex("#e4fbf0"), backgroundBottom = Hex("#b3ecd2") },
+            new LidTheme { name = "らべんだー", lid = Hex("#cdb6f2"), backgroundTop = Hex("#f1e9ff"), backgroundBottom = Hex("#d9c6f7") },
+            new LidTheme { name = "そらいろ", lid = Hex("#9fd3f5"), backgroundTop = Hex("#e6f5ff"), backgroundBottom = Hex("#b6def7") },
+            new LidTheme { name = "はだいろ", lid = Hex("#f3c9a3"), backgroundTop = Hex("#fdeedd"), backgroundBottom = Hex("#f3d4b6") },
+            new LidTheme { name = "ねずみ", lid = Hex("#b9bcc4"), backgroundTop = Hex("#eceef2"), backgroundBottom = Hex("#cfd3da") },
+            new LidTheme { name = "よる", lid = Hex("#5b5e8a"), backgroundTop = Hex("#2d2f52"), backgroundBottom = Hex("#1a1b33") },
+        };
+
+        public static IrisTheme IrisOf(int i) => Iris[Mathf.Clamp(i, 0, Iris.Length - 1)];
+        public static LidTheme LidOf(int i) => Lid[Mathf.Clamp(i, 0, Lid.Length - 1)];
+    }
+}

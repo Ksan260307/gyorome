@@ -1,0 +1,59 @@
+# Unity
+unity/[Ll]ibrary/
+unity/[Tt]emp/
+unity/[Oo]bj/
+unity/[Bb]uild/
+unity/[Bb]uilds/
+unity/[Ll]ogs/
+unity/[Uu]ser[Ss]ettings/
+unity/[Mm]emoryCaptures/
+unity/[Rr]ecordings/
+unity/.vs/
+unity/.idea/
+unity/*.csproj
+unity/*.sln
+unity/*.slnx
+unity/*.suo
+unity/*.user
+unity/*.pidb
+unity/*.booproj
+unity/*.svd
+unity/*.pdb
+unity/*.mdb
+unity/*.opendb
+unity/*.VC.db
+unity/Assets/Plugins/Editor/JetBrains*
+unity/Assets/AssetStoreTools*
+unity/sysinfo.txt
+unity/crashlytics-build.properties
+unity/*.keystore
+unity/user.keystore
+
+# Blender
+*.blend1
+blender/previews/
+
+# Local build output (CI 用の公開ビルドは docs/ ではなく artifacts で配信)
+/WebGLBuild/
+/build-tmp/
+/Builds/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+
+# Unity が生成するもの
+unity/Assets/StreamingAssets/*
+
+# ローカル開発用
+.claude/
+
+# Unity Test Runner の一時シーン
+unity/Assets/InitTestScene*
+
+# Steam
+tools/steam/output/
+tools/steam/*.vdf.local

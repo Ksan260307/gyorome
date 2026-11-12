@@ -1,0 +1,12 @@
+"DepotBuild"
+{
+	"DepotID" "YOUR_APP_ID+2"
+	"ContentRoot" "..\\..\\Builds\\macOS\\"
+	"FileMapping"
+	{
+		"LocalPath" "*"
+		"DepotPath" "."
+		"recursive" "1"
+	}
+	"FileExclusion" "*_DoNotShip*"
+}

@@ -1,0 +1,19 @@
+// ぎょろめ: SteamPipe のビルド設定（手元から steamcmd でアップロードするとき）
+//   steamcmd +login <account> +run_app_build <このファイルの絶対パス> +quit
+// Steamworks で発行された AppID と Depot ID に書きかえてください（CI では .github/workflows/release.yml の steam ジョブが同じ内容を送ります）
+"AppBuild"
+{
+	"AppID" "YOUR_APP_ID"
+	"Desc" "Gyorome build"
+	"Preview" "0"
+	"Local" ""
+	"SetLive" "beta"
+	"ContentRoot" "..\\..\\Builds\\"
+	"BuildOutput" "output\\"
+	"Depots"
+	{
+		"YOUR_APP_ID+1" "depot_windows.vdf"
+		"YOUR_APP_ID+2" "depot_macos.vdf"
+		"YOUR_APP_ID+3" "depot_linux.vdf"
+	}
+}
