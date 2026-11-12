@@ -9,8 +9,6 @@ namespace Gyorome
     {
         public bool sound = true;
         public bool haptics = true;
-        public bool names = true;      // 反応の名前（オノマトペ）を出す
-        public bool hints = true;      // しばらくさわらないとヒントを出す
         public int irisTheme = 0;
         public int lidTheme = 0;
     }

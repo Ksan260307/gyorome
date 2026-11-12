@@ -7,7 +7,7 @@ using static Gyorome.Tests.GameHarness;
 
 namespace Gyorome.Tests
 {
-    /// <summary>総合テスト：見つけた数・ふきだし・図鑑・せってい・記号となみだ。</summary>
+    /// <summary>総合テスト：画面の上のもの（ふきだし・図鑑は出さない）・せってい・記号となみだ。</summary>
     public class UiPlayTests
     {
         [UnitySetUp]
@@ -21,50 +21,33 @@ namespace Gyorome.Tests
         public void TearDown() => Shutdown();
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator CounterPopupAndToast_FollowDiscoveries()
+        public IEnumerator NoBookCounterOrNameBubbles()
         {
-            Assert.IsTrue(UI.CounterText.StartsWith("0 /"), UI.CounterText);
+            Assert.IsNull(UI.Root.Q("book"), "図鑑はない");
+            Assert.IsNull(UI.Root.Q("book-button"));
+            Assert.IsNull(UI.Root.Q("counter"));
+            Assert.IsNull(UI.Root.Q("popups"), "反応の名前のふきだしはない");
+            Assert.IsNull(UI.Root.Q("toast"));
+            Assert.IsNull(UI.Root.Q("hint"));
             yield return Tap(EyeA);
             yield return null;
-            Assert.IsTrue(UI.CounterText.StartsWith("1 /"), UI.CounterText);
-            Assert.AreEqual(1, UI.PopupCount, "反応の名前が出る");
-            Assert.AreEqual(ReactionCatalog.Find(Director.LastId).Name, UI.LastPopup);
-            StringAssert.Contains("あたらしい反応", UI.LastToast);
-            yield return WaitIdle();
-            // 設定で名前を消せる
-            SaveSystem.Settings.names = false;
-            yield return Tap(EyeB);
-            Assert.AreEqual(1, UI.PopupCount);
+            Assert.AreEqual(0, UI.Root.Query<Label>(className: "popup").ToList().Count, "タップしても文字は出ない");
             yield return WaitIdle();
         }
 
         [UnityTest, Timeout(60000)]
-        public IEnumerator Book_ListsEveryReactionAndBlocksTouches()
-        {
-            Assert.IsFalse(UI.IsPointerOverUI(BgPoint), "何もない所は UI ではない");
-            Assert.IsFalse(UI.IsPointerOverUI(EyeA));
-            UI.OpenBook();
-            yield return null;
-            Assert.IsTrue(UI.BookOpen);
-            Assert.AreEqual(ReactionCatalog.Count, UI.BookEntries);
-            Assert.IsTrue(UI.IsPointerOverUI(EyeA), "窓がひらいている間は、目にさわれない");
-            UI.CloseBook();
-            Assert.IsFalse(UI.BookOpen);
-            Assert.IsFalse(UI.IsPointerOverUI(EyeA));
-        }
-
-        [UnityTest, Timeout(60000)]
-        public IEnumerator HudButtons_AreUIAndEverythingElseIsNot()
+        public IEnumerator SettingsButton_IsUIAndEverythingElseIsNot()
         {
             yield return null;
-            var button = UI.Root.Q<Button>("book-button");
+            var button = UI.Root.Q<Button>("settings-button");
             Assert.IsNotNull(button);
-            Rect wb = button.worldBound;
-            Vector2 centerPanel = wb.center;
+            Vector2 c = button.worldBound.center;
             var vt = UI.Root.panel.visualTree;
-            Vector2 screen = new Vector2(centerPanel.x / vt.layout.width * Screen.width, (1f - centerPanel.y / vt.layout.height) * Screen.height);
-            Assert.IsTrue(UI.IsPointerOverUI(screen), "本のボタンの上");
+            Vector2 screen = new Vector2(c.x / vt.layout.width * Screen.width, (1f - c.y / vt.layout.height) * Screen.height);
+            Assert.IsTrue(UI.IsPointerOverUI(screen), "歯車のボタンの上");
             Assert.IsFalse(UI.IsPointerOverUI(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f)));
+            Assert.IsFalse(UI.IsPointerOverUI(EyeA));
+            Assert.IsFalse(UI.IsPointerOverUI(BgPoint));
         }
 
         [UnityTest, Timeout(60000)]
@@ -73,6 +56,7 @@ namespace Gyorome.Tests
             UI.OpenSettings();
             yield return null;
             Assert.IsTrue(UI.SettingsOpen);
+            Assert.IsTrue(UI.IsPointerOverUI(EyeA), "窓がひらいている間は、目にさわれない");
             var sound = UI.Root.Q<Toggle>("toggle-sound");
             Assert.IsTrue(sound.value);
             sound.value = false;
@@ -80,25 +64,11 @@ namespace Gyorome.Tests
             Assert.IsFalse(GM.audioManager.Play("pop"), "音を切ると鳴らない");
             sound.value = true;
             Assert.IsTrue(GM.audioManager.Play("pop"));
-            Assert.AreEqual(Themes.Iris.Length, UI.Root.Q("iris-swatches").childCount);
+            Assert.IsNull(UI.Root.Q("iris-swatches"), "黒目の色は選ばない");
             Assert.AreEqual(Themes.Lid.Length, UI.Root.Q("lid-swatches").childCount);
             UI.CloseSettings();
             Assert.IsFalse(UI.SettingsOpen);
-        }
-
-        [UnityTest, Timeout(60000)]
-        public IEnumerator Hints_AppearWhenIdle()
-        {
-            UI.hintInterval = 0.5f;
-            UI.ResetHintTimer();
-            GyoIn.NoteInput();
-            yield return Seconds(1f);
-            Assert.AreEqual(0, UI.HintsShown, "さわった直後はヒントを出さない");
-            // 6 秒より前に入力があった扱いにする
-            var field = typeof(GyoInput).GetProperty("LastInputTime");
-            yield return Seconds(6.5f);
-            Assert.GreaterOrEqual(UI.HintsShown, 1, "しばらくさわらないとヒント");
-            _ = field;
+            Assert.IsFalse(UI.IsPointerOverUI(EyeA));
         }
 
         [UnityTest, Timeout(60000)]

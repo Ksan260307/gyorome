@@ -47,8 +47,9 @@ namespace Gyorome
         public float RollTarget;
         public float RollSmooth = 0.15f;
         public Color TintTarget = Color.white;
-        public Color IrisTarget = new Color(0.25f, 0.48f, 0.78f);
-        public Color IrisInnerTarget = new Color(0.56f, 0.77f, 0.94f);
+        /// <summary>黒目の色（ふだんは黒。反応で金色や虹色になる）。</summary>
+        public Color IrisTarget = new Color(0.08f, 0.07f, 0.09f);
+        public Color IrisInnerTarget = new Color(0.08f, 0.07f, 0.09f);
         public float ColorSmooth = 0.25f;
         public Color LidColor = new Color(1f, 0.84f, 0.44f);
         public Mood Mood = Mood.Normal;
@@ -84,6 +85,7 @@ namespace Gyorome
         static readonly int SpinId = Shader.PropertyToID("_Spin");
         static readonly int IrisColorId = Shader.PropertyToID("_IrisColor");
         static readonly int IrisInnerId = Shader.PropertyToID("_IrisInner");
+        static readonly int ScleraColorId = Shader.PropertyToID("_ScleraColor");
         static readonly int SparkleId = Shader.PropertyToID("_Sparkle");
 
         public Vector2 Gaze => new Vector2(_yaw.value, _pitch.value);
@@ -383,7 +385,8 @@ namespace Gyorome
             if (irisRenderer != null)
             {
                 _mpb.Clear();
-                _mpb.SetFloat(PupilSizeId, _pupil.value);
+                _mpb.SetFloat(PupilSizeId, Mathf.Clamp(_pupil.value * GyoConst.PupilToShader, 0.05f, 1f));
+                _mpb.SetColor(ScleraColorId, _tint);
                 _mpb.SetFloat(PupilShapeId, (float)Shape);
                 _mpb.SetFloat(SpinId, Spin);
                 _mpb.SetColor(IrisColorId, _iris);

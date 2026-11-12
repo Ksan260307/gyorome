@@ -79,9 +79,7 @@ namespace Gyorome.Tests
             var lt = Themes.LidOf(SaveSystem.Settings.lidTheme);
             Assert.AreEqual(it.outer, Eyes.A.IrisTarget);
             Assert.AreEqual(lt.lid, Eyes.B.LidColor);
-            GM.SetIrisTheme(3);
-            Assert.AreEqual(Themes.Iris[3].outer, Eyes.A.IrisTarget);
-            Assert.AreEqual(3, SaveSystem.Settings.irisTheme);
+            Assert.Less(Eyes.A.IrisTarget.r + Eyes.A.IrisTarget.g + Eyes.A.IrisTarget.b, 0.4f, "黒目は黒");
             GM.SetLidTheme(2);
             Assert.AreEqual(Themes.Lid[2].lid, Eyes.A.LidColor);
             Assert.AreEqual(Themes.Lid[2].backgroundBottom, GM.cam.backgroundColor);

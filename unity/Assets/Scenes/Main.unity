@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &252126380
+--- !u!1 &645330181
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,9 +127,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 252126383}
-  - component: {fileID: 252126382}
-  - component: {fileID: 252126381}
+  - component: {fileID: 645330184}
+  - component: {fileID: 645330183}
+  - component: {fileID: 645330182}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -137,13 +137,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &252126381
+--- !u!114 &645330182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252126380}
+  m_GameObject: {fileID: 645330181}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24cdcfbb1d873b94e90ad1faacf6fc6b, type: 3}
@@ -151,15 +151,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gyorome.Runtime::Gyorome.GameUI
   bodyFont: {fileID: 12800000, guid: 65c90d889ba90c44ea6f8005cda46653, type: 3}
   titleFont: {fileID: 12800000, guid: 618f23dcca282134fab1a53acbc236ea, type: 3}
-  hintInterval: 14
-  hintDuration: 5
---- !u!114 &252126382
+--- !u!114 &645330183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252126380}
+  m_GameObject: {fileID: 645330181}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
@@ -176,13 +174,13 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
---- !u!4 &252126383
+--- !u!4 &645330184
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252126380}
+  m_GameObject: {fileID: 645330181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -191,7 +189,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1086151727
+--- !u!1 &810625783
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,8 +197,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1086151729}
-  - component: {fileID: 1086151728}
+  - component: {fileID: 810625785}
+  - component: {fileID: 810625784}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -208,13 +206,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!108 &1086151728
+--- !u!108 &810625784
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086151727}
+  m_GameObject: {fileID: 810625783}
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
@@ -273,13 +271,13 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!4 &1086151729
+--- !u!4 &810625785
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086151727}
+  m_GameObject: {fileID: 810625783}
   serializedVersion: 2
   m_LocalRotation: {x: 0.31589738, y: -0.22874165, z: 0.07876206, w: 0.9174326}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -288,7 +286,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1361850546
+--- !u!1 &1019577623
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,14 +294,14 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1361850554}
-  - component: {fileID: 1361850553}
-  - component: {fileID: 1361850552}
-  - component: {fileID: 1361850551}
-  - component: {fileID: 1361850550}
-  - component: {fileID: 1361850549}
-  - component: {fileID: 1361850548}
-  - component: {fileID: 1361850547}
+  - component: {fileID: 1019577631}
+  - component: {fileID: 1019577630}
+  - component: {fileID: 1019577629}
+  - component: {fileID: 1019577628}
+  - component: {fileID: 1019577627}
+  - component: {fileID: 1019577626}
+  - component: {fileID: 1019577625}
+  - component: {fileID: 1019577624}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -311,13 +309,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1361850547
+--- !u!114 &1019577624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 443f37fcd5f0ff54393039819d3d81ba, type: 3}
@@ -325,13 +323,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gyorome.Runtime::Gyorome.Emotes
   eyes: {fileID: 0}
   assets: {fileID: 11400000, guid: 7aefb047a7a682841a7b39c01ce663fc, type: 2}
---- !u!114 &1361850548
+--- !u!114 &1019577625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f56c5eba5554de1429ca9978a5a220dc, type: 3}
@@ -341,13 +339,13 @@ MonoBehaviour:
   voices: 6
   sfxVolume: 0.9
   ambienceVolume: 0.35
---- !u!114 &1361850549
+--- !u!114 &1019577626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b98ef362a9ebd43438f155ecb7829263, type: 3}
@@ -364,13 +362,13 @@ MonoBehaviour:
   DrowsyAfter: 30
   SleepAfter: 45
   IdleStart: 0
---- !u!114 &1361850550
+--- !u!114 &1019577627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62974874deb2e524ab0fa5a5883bbd77, type: 3}
@@ -381,13 +379,13 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   emotes: {fileID: 0}
   behaviour: {fileID: 0}
---- !u!114 &1361850551
+--- !u!114 &1019577628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33462486be2ec5f49890de07796e722b, type: 3}
@@ -396,13 +394,13 @@ MonoBehaviour:
   shakeThreshold: 2.2
   tiltThreshold: 0.28
   sensorsEnabled: 1
---- !u!114 &1361850552
+--- !u!114 &1019577629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d158c0aa2496da544b58e6f5d3531334, type: 3}
@@ -410,37 +408,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gyorome.Runtime::Gyorome.EyePair
   A: {fileID: 0}
   B: {fileID: 0}
-  cam: {fileID: 1576654892}
+  cam: {fileID: 1460607107}
   stage: {fileID: 0}
---- !u!114 &1361850553
+--- !u!114 &1019577630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c170d2bfccba8754fa9c8b1c37b6ae4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gyorome.Runtime::Gyorome.GameManager
   assets: {fileID: 11400000, guid: 7aefb047a7a682841a7b39c01ce663fc, type: 2}
-  cam: {fileID: 1576654892}
-  eyes: {fileID: 1361850552}
-  input: {fileID: 1361850551}
-  director: {fileID: 1361850550}
-  behaviour: {fileID: 1361850549}
-  audioManager: {fileID: 1361850548}
-  emotes: {fileID: 1361850547}
-  ui: {fileID: 252126381}
+  cam: {fileID: 1460607107}
+  eyes: {fileID: 1019577629}
+  input: {fileID: 1019577628}
+  director: {fileID: 1019577627}
+  behaviour: {fileID: 1019577626}
+  audioManager: {fileID: 1019577625}
+  emotes: {fileID: 1019577624}
+  ui: {fileID: 645330182}
   background: {fileID: 0}
---- !u!4 &1361850554
+--- !u!4 &1019577631
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361850546}
+  m_GameObject: {fileID: 1019577623}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -449,7 +447,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1576654891
+--- !u!1 &1460607106
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -457,10 +455,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1576654895}
-  - component: {fileID: 1576654892}
-  - component: {fileID: 1576654894}
-  - component: {fileID: 1576654893}
+  - component: {fileID: 1460607110}
+  - component: {fileID: 1460607107}
+  - component: {fileID: 1460607109}
+  - component: {fileID: 1460607108}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -468,13 +466,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!20 &1576654892
+--- !u!20 &1460607107
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576654891}
+  m_GameObject: {fileID: 1460607106}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
@@ -519,21 +517,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1576654893
+--- !u!81 &1460607108
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576654891}
+  m_GameObject: {fileID: 1460607106}
   m_Enabled: 1
---- !u!114 &1576654894
+--- !u!114 &1460607109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576654891}
+  m_GameObject: {fileID: 1460607106}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
@@ -571,13 +569,13 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!4 &1576654895
+--- !u!4 &1460607110
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576654891}
+  m_GameObject: {fileID: 1460607106}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2000}
@@ -586,7 +584,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1814970093
+--- !u!1 &1861298453
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,9 +592,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1814970096}
-  - component: {fileID: 1814970095}
-  - component: {fileID: 1814970094}
+  - component: {fileID: 1861298456}
+  - component: {fileID: 1861298455}
+  - component: {fileID: 1861298454}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -604,13 +602,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1814970094
+--- !u!114 &1861298454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814970093}
+  m_GameObject: {fileID: 1861298453}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
@@ -635,13 +633,13 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
---- !u!114 &1814970095
+--- !u!114 &1861298455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814970093}
+  m_GameObject: {fileID: 1861298453}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
@@ -650,13 +648,13 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!4 &1814970096
+--- !u!4 &1861298456
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814970093}
+  m_GameObject: {fileID: 1861298453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -669,8 +667,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1086151729}
-  - {fileID: 1576654895}
-  - {fileID: 1361850554}
-  - {fileID: 252126383}
-  - {fileID: 1814970096}
+  - {fileID: 810625785}
+  - {fileID: 1460607110}
+  - {fileID: 1019577631}
+  - {fileID: 645330184}
+  - {fileID: 1861298456}

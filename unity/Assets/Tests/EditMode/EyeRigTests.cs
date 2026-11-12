@@ -192,6 +192,15 @@ namespace Gyorome.Tests
         }
 
         [Test]
+        public void PupilScale_FillsTheIrisCapAtMost()
+        {
+            Assert.Greater(GyoConst.PupilNormal * GyoConst.PupilToShader, 0.6f, "ふだんの黒目は大きめ（白目の中の黒い丸）");
+            Assert.Less(GyoConst.PupilNormal * GyoConst.PupilToShader, 0.9f);
+            Assert.GreaterOrEqual(GyoConst.PupilBig * GyoConst.PupilToShader, 1f, "大きいときは虹彩のふたいっぱい");
+            Assert.Greater(GyoConst.PupilSmall * GyoConst.PupilToShader, 0.3f, "小さくても点にはならない");
+        }
+
+        [Test]
         public void Scale_SquashesAroundTheRadius()
         {
             var rig = Make();

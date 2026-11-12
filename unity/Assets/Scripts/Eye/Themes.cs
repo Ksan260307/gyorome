@@ -26,16 +26,10 @@ namespace Gyorome
             return c;
         }
 
+        /// <summary>黒目の色。模様のない黒だけ（反応で一時的に金色・虹色になる）。</summary>
         public static readonly IrisTheme[] Iris =
         {
-            new IrisTheme { name = "そら", outer = Hex("#3f7ac6"), inner = Hex("#8fc4f0") },
-            new IrisTheme { name = "こげちゃ", outer = Hex("#5a3a22"), inner = Hex("#b07a4a") },
-            new IrisTheme { name = "みどり", outer = Hex("#3f8f52"), inner = Hex("#9ed98a") },
-            new IrisTheme { name = "はいいろ", outer = Hex("#6c7a88"), inner = Hex("#b9c6d1") },
-            new IrisTheme { name = "こはく", outer = Hex("#c98a1e"), inner = Hex("#ffd56a") },
-            new IrisTheme { name = "すみれ", outer = Hex("#7a4fb8"), inner = Hex("#c9a6f0") },
-            new IrisTheme { name = "あか", outer = Hex("#b83a33"), inner = Hex("#ff9a7a") },
-            new IrisTheme { name = "もも", outer = Hex("#d9609a"), inner = Hex("#ffb8d6") },
+            new IrisTheme { name = "くろ", outer = Hex("#141217"), inner = Hex("#141217") },
         };
 
         public static readonly LidTheme[] Lid =

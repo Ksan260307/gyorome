@@ -169,13 +169,6 @@ namespace Gyorome
             if (cam != null) cam.backgroundColor = _bgBottom;
         }
 
-        public void SetIrisTheme(int i)
-        {
-            SaveSystem.Settings.irisTheme = Mathf.Clamp(i, 0, Themes.Iris.Length - 1);
-            SaveSystem.SaveSettings();
-            ApplyTheme();
-        }
-
         public void SetLidTheme(int i)
         {
             SaveSystem.Settings.lidTheme = Mathf.Clamp(i, 0, Themes.Lid.Length - 1);

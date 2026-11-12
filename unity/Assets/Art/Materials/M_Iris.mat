@@ -31,13 +31,14 @@ Material:
     - _GlintSize: 0.955
     - _LimbalDark: 0.55
     - _PupilShape: 0
-    - _PupilSize: 0.42
+    - _PupilSize: 0.73499995
     - _Sparkle: 0
     - _Spin: 0
     m_Colors:
-    - _IrisColor: {r: 0.24705882, g: 0.47843137, b: 0.7764706, a: 1}
-    - _IrisInner: {r: 0.56078434, g: 0.76862746, b: 0.9411765, a: 1}
+    - _IrisColor: {r: 0.078431375, g: 0.07058824, b: 0.09019608, a: 1}
+    - _IrisInner: {r: 0.078431375, g: 0.07058824, b: 0.09019608, a: 1}
     - _PupilColor: {r: 0.06999998, g: 0.059999965, b: 0.079999976, a: 1}
+    - _ScleraColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0.8, g: 0.8, b: 0.88, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

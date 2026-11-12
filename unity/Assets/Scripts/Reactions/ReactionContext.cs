@@ -121,7 +121,6 @@ namespace Gyorome
         public void Emote(string text, EyeRig at) => Emote(text, at, new Vector2(0.75f, 0.75f));
         public void Tear(EyeRig eye, int side = 1) => Fx?.Tear(eye, side);
         public void Sweat(EyeRig eye) => Fx?.Sweat(eye);
-        public void Say(string text) => Director?.ShowName(text, Target ?? Eyes.A);
 
         // 両目にまとめて
         public void BothLook(Vector2 yawPitch) { foreach (var e in Eyes.Both) e.Look(yawPitch); }

@@ -187,7 +187,8 @@ namespace Gyorome.Tests
         [Test]
         public void Themes_HaveSeveralChoicesAndClamp()
         {
-            Assert.GreaterOrEqual(Themes.Iris.Length, 6);
+            Assert.AreEqual(1, Themes.Iris.Length, "黒目は黒だけ（模様も色えらびもない）");
+            Assert.Less(Themes.Iris[0].outer.maxColorComponent, 0.15f);
             Assert.GreaterOrEqual(Themes.Lid.Length, 6);
             Assert.AreEqual(Themes.Iris[0].name, Themes.IrisOf(-5).name);
             Assert.AreEqual(Themes.Lid[Themes.Lid.Length - 1].name, Themes.LidOf(99).name);

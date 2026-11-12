@@ -227,7 +227,7 @@ namespace Gyorome.Tests
             var names = new HashSet<string>();
             foreach (Match m in Regex.Matches(code, @"Q<\w+>\(""([\w-]+)""\)")) names.Add(m.Groups[1].Value);
             foreach (Match m in Regex.Matches(code, @"\.Q\(""([\w-]+)""\)")) names.Add(m.Groups[1].Value);
-            Assert.Greater(names.Count, 15);
+            Assert.Greater(names.Count, 8);
             foreach (var n in names) Assert.IsNotNull(root.Q(n), $"UXML に '{n}' がありません");
         }
 

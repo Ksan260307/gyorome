@@ -27,7 +27,6 @@ namespace Gyorome
         public float LastPlayedTime { get; private set; } = -100f;
         public readonly List<string> History = new List<string>();
         public event Action<Reaction, bool> Played;
-        public event Action<string, EyeRig> NameShown;
         public System.Random Rng = new System.Random();
         /// <summary>テスト用：反応をえらぶ乱数を固定する。</summary>
         public int Seed { set => Rng = new System.Random(value); }
@@ -259,7 +258,6 @@ namespace Gyorome
             History.Add(r.Id);
             if (History.Count > 20) History.RemoveAt(0);
             bool isNew = SaveSystem.Record(r.Id);
-            if (!string.IsNullOrEmpty(r.Name) && !r.IsIdle) ShowName(r.Name, ctx.Target ?? eyes.A);
             Played?.Invoke(r, isNew);
             _routine = StartCoroutine(Run(r, ctx));
         }
@@ -341,7 +339,6 @@ namespace Gyorome
             Played?.Invoke(r, true);
         }
 
-        public void ShowName(string text, EyeRig at) => NameShown?.Invoke(text, at);
 
         /// <summary>今の反応をすぐ終える（テスト用）。</summary>
         public void Interrupt() => Stop();

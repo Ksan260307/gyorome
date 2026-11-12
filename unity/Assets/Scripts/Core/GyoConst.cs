@@ -23,7 +23,8 @@ namespace Gyorome
         /// <summary>下まぶたが閉じるときに回る角度。閉じたふちの仰角 = -125 + 30 + 70 = -25 度。</summary>
         public const float LowerTravelDeg = 30f;
 
-        /// <summary>ひとみの大きさ（虹彩の半径に対する割合）。</summary>
+        /// <summary>ひとみ（黒目）の大きさ。反応はこの目盛りで書く。シェーダーには PupilToShader 倍して渡す（1 で虹彩のふたいっぱい）。</summary>
+        public const float PupilToShader = 1.75f;
         public const float PupilNormal = 0.42f;
         public const float PupilSmall = 0.22f;
         public const float PupilBig = 0.64f;

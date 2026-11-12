@@ -324,7 +324,8 @@ namespace Gyorome.EditorTools
             {
                 m.SetColor("_IrisColor", Themes.Iris[0].outer);
                 m.SetColor("_IrisInner", Themes.Iris[0].inner);
-                m.SetFloat("_PupilSize", GyoConst.PupilNormal);
+                m.SetColor("_ScleraColor", Color.white);
+                m.SetFloat("_PupilSize", GyoConst.PupilNormal * GyoConst.PupilToShader);
             });
             assets.background = Mat("M_Background", "Gyorome/Background", m =>
             {

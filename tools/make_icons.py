@@ -21,8 +21,6 @@ S = 4
 
 BG = (255, 214, 112, 255)        # たまご色の背景
 SCLERA = (252, 250, 246, 255)
-IRIS = (82, 132, 190, 255)
-IRIS_DARK = (40, 70, 120, 255)
 PUPIL = (24, 22, 30, 255)
 LINE = (70, 60, 50, 255)
 
@@ -45,11 +43,9 @@ def draw_eye(d, cx, cy, r, look=(0.0, 0.0), lid=0.0, outline=True):
     d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=SCLERA)
     ix = cx + look[0] * r * 0.42
     iy = cy + look[1] * r * 0.42
-    ir = r * 0.5
-    d.ellipse([ix - ir, iy - ir, ix + ir, iy + ir], fill=IRIS_DARK)
-    d.ellipse([ix - ir * 0.9, iy - ir * 0.9, ix + ir * 0.9, iy + ir * 0.9], fill=IRIS)
-    pr = ir * 0.52
-    d.ellipse([ix - pr, iy - pr, ix + pr, iy + pr], fill=PUPIL)
+    ir = r * 0.48
+    # 黒目：模様のない黒い丸
+    d.ellipse([ix - ir, iy - ir, ix + ir, iy + ir], fill=PUPIL)
     hr = r * 0.17
     d.ellipse([ix - ir * 0.45 - hr, iy - ir * 0.5 - hr, ix - ir * 0.45 + hr, iy - ir * 0.5 + hr], fill=(255, 255, 255, 255))
     hr2 = r * 0.07
